@@ -27,19 +27,21 @@ int main(int argc, char* argv[]) {
     std::string fin_name(argv[1]);
     std::ifstream fin(fin_name);
     // Check input file state
-    if(!fin.is_open() || fin.fail()) {
+    if (!fin.is_open() || fin.fail()) {
         return except(new std::invalid_argument(fin_name + " is inaccessible or invalid."));
     }
     // Warn if input file is not an .asm/.s file
-    if(fin_name.find(".asm") == std::string::npos && fin_name.find(".s") == std::string::npos) {
-        std::cout << sh_warn << "warning: " << eh_warn << fin_name << " might not an assembly file. (.asm/.s missing)" << std::endl;
+    if (fin_name.find(".asm") == std::string::npos && fin_name.find(".s") == std::string::npos) {
+        std::cout << sh_warn << "warning: " << eh_warn << fin_name << " might not an assembly file. (.asm/.s missing)"
+                  << std::endl;
     }
 
     // Open output file and check state
     auto extension_index = fin_name.find_last_of(".");
-    std::string fout_name = fin_name.substr(0, (extension_index == std::string::npos) ? fin_name.length() : extension_index) + ".hack";
+    std::string fout_name =
+            fin_name.substr(0, (extension_index == std::string::npos) ? fin_name.length() : extension_index) + ".hack";
     std::ofstream fout(fout_name, std::ios::binary);
-    if(!fout.is_open() || fout.fail()) {
+    if (!fout.is_open() || fout.fail()) {
         return except(new std::invalid_argument("Could not open " + fout_name + "."));
     }
 
@@ -62,6 +64,6 @@ int main(int argc, char* argv[]) {
     }
     fout << std::flush;
     std::cout << std::endl << "Done!";
-    
+
     return 0;
 }

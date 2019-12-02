@@ -1,16 +1,23 @@
 #pragma once
-#include "include/common.hh"
+
+#include "common.hh"
 #include <map>
 
 namespace hasm {
     class symbols {
     public:
         symbols();
+
         void add(const std::string symbol, const uint16_t address);
+
         void push(const std::string symbol);
+
         bool contains(const std::string symbol);
+
         uint16_t get(const std::string symbol);
+
         bool contains_reverse(uint16_t address);
+
         const std::string get_reverse(uint16_t address);
 
     private:

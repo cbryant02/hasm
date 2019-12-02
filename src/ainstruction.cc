@@ -2,6 +2,7 @@
 #include "include/instruction.hh"
 #include <memory>
 #include <stdexcept>
+
 using hasm::instruction;
 
 namespace hasm {
@@ -15,7 +16,7 @@ namespace hasm {
             uint16_t address;
             try {
                 int temp = std::stoi(istring.substr(1));
-                if(temp < 0 || temp > 65535) throw std::out_of_range("");
+                if (temp < 0 || temp > 65535) throw std::out_of_range("");
                 address = std::stoi(istring.substr(1));
             } catch (const std::invalid_argument& e) {
                 throw_assemble_error("Could not convert " + istring.substr(1) + " to an integer", 1);
@@ -25,6 +26,7 @@ namespace hasm {
 
             return 0x7FFF & address;
         }
+
     private:
         std::string istring;
     };

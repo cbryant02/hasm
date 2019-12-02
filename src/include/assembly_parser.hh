@@ -1,5 +1,6 @@
 #pragma once
-#include "include/instruction.hh"
+
+#include "instruction.hh"
 #include <fstream>
 #include <vector>
 #include <map>
@@ -13,7 +14,7 @@ namespace hasm {
         std::vector<hasm::instruction*> instructions;
 
         assembly_parser(std::ifstream& source);
-    
+
     private:
         hasm::instruction* parse(std::string instruction);
     };

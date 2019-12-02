@@ -1,4 +1,5 @@
 #include "include/symbols.hh"
+
 using hasm::symbols;
 
 symbols::symbols() {
@@ -8,7 +9,7 @@ symbols::symbols() {
     symbol_map.emplace("ARG", 0x2);
     symbol_map.emplace("THIS", 0x3);
     symbol_map.emplace("THAT", 0x4);
-    for(int i = 0; i <= 0xF; i++) {
+    for (int i = 0; i <= 0xF; i++) {
         symbol_map.emplace("R" + std::to_string(i), i);
     }
     symbol_map.emplace("SCREEN", 0x4000);
